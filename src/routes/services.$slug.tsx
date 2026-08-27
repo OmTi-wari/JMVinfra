@@ -1,0 +1,21 @@
+import { ArrowRight, Check } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+
+import serviceImage from "@/assets/hero.jpg";
+import { PageLayout } from "@/components/PageLayout";
+import { projectsData } from "@/data/projectsData";
+import { servicesData } from "@/data/servicesData";
+
+export const Route = createFileRoute("/services/$slug")({
+  head: ({ params }) => ({ meta: [{ title: `${params.slug.replace(/-/g, " ")} | JMV Engineering Infra` }] }),
+  component: ServiceDetailPage,
+});
+
+function ServiceDetailPage() {
+  const { slug } = Route.useParams();
+  const service = servicesData.find((item) => item.slug === slug);
+  if (!service) return <PageLayout eyebrow="Service unavailable" title="This service isn’t listed yet." description="Please select another service from our business areas or contact JMV for a custom solution."><Link to="/services" className="inline-flex rounded-full bg-jmv-orange px-5 py-3 text-sm font-semibold text-white">Back to services</Link></PageLayout>;
+  const relatedProjects = projectsData.filter((project) => project.serviceSlug === service.slug);
+  const lists = [["Scope of Work", service.scopeOfWork], ["Technical Execution", service.technicalExecution], ["Equipment Deployment", service.equipmentDeployment]] as const;
+  return <><section className="relative isolate overflow-hidden bg-jmv-brown py-28 text-white lg:py-36"><img src={serviceImage} alt="Infrastructure work site" className="absolute inset-0 -z-20 h-full w-full object-cover opacity-30" /><div className="absolute inset-0 -z-10 bg-jmv-brown/80" /><div className="mx-auto max-w-7xl px-6 lg:px-10"><p className="eyebrow text-jmv-orange">{service.category}</p><h1 className="mt-5 max-w-4xl text-5xl font-extrabold leading-none tracking-[-0.05em] text-white md:text-7xl">{service.title}</h1><p className="mt-7 max-w-2xl text-lg leading-8 text-white/75">{service.summary}</p></div></section><PageLayout eyebrow="Service profile" title="A disciplined delivery model from first brief to final handover." description="Our teams align scope, technical controls, people, and equipment around the demands of each infrastructure environment."><div className="grid gap-6 lg:grid-cols-3">{lists.map(([title, items]) => <section key={title} className="rounded-2xl border border-border bg-white p-7 shadow-soft"><p className="eyebrow text-jmv-orange">{title}</p><ul className="mt-6 space-y-4">{items.map((item) => <li key={item} className="flex gap-3 text-sm leading-7 text-jmv-charcoal/75"><Check className="mt-1 h-4 w-4 shrink-0 text-jmv-orange" />{item}</li>)}</ul></section>)}</div><section className="mt-16 rounded-[2rem] bg-jmv-grey p-8 md:p-10"><p className="eyebrow text-jmv-orange">Overview</p><h2 className="mt-3 text-3xl font-bold text-jmv-brown">Built around clarity, control, and dependable progress.</h2><p className="mt-5 max-w-3xl text-base leading-8 text-jmv-charcoal/70">{service.summary}</p></section><section className="mt-16"><div><p className="eyebrow text-jmv-orange">Related projects</p><h2 className="mt-3 text-3xl font-bold text-jmv-brown">Where this capability is applied.</h2></div><div className="mt-8 grid gap-5 md:grid-cols-2">{relatedProjects.length ? relatedProjects.map((project) => <Link key={project.slug} to="/projects/$slug" params={{ slug: project.slug }} className="rounded-2xl border border-border bg-white p-6 shadow-soft transition hover:border-jmv-orange/50"><p className="eyebrow text-jmv-orange">{project.status}</p><h3 className="mt-3 text-xl font-bold text-jmv-brown">{project.title}</h3><p className="mt-2 text-sm text-jmv-charcoal/65">{project.location}</p></Link>) : <p className="text-sm text-jmv-charcoal/65">[Related Project Profile Pending Verification]</p>}</div></section><section className="mt-16 flex flex-col gap-6 rounded-[2rem] bg-jmv-orange p-8 text-white md:flex-row md:items-center md:justify-between md:p-10"><div><p className="eyebrow text-white/70">Project consultation</p><h2 className="mt-3 text-3xl font-bold text-white">Consult on {service.title} Project</h2></div><Link to="/contact" className="inline-flex items-center gap-2 self-start rounded-full bg-white px-5 py-3 text-sm font-semibold text-jmv-orange">Start a conversation <ArrowRight className="h-4 w-4" /></Link></section></PageLayout></>;
+}
