@@ -67,7 +67,10 @@ export function Navbar() {
       <div className="border-b border-white/10 bg-jmv-brown text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2 text-[11px] font-medium tracking-[0.08em] uppercase lg:px-10">
           <div className="flex items-center gap-4 text-white/80">
-            <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="inline-flex items-center gap-2 hover:text-white">
+            <a
+              href={`tel:${contact.phone.replace(/\s/g, "")}`}
+              className="inline-flex items-center gap-2 hover:text-white"
+            >
               <Phone className="h-3.5 w-3.5" strokeWidth={2} />
               {contact.phone}
             </a>
@@ -98,12 +101,16 @@ export function Navbar() {
       <div
         className={cn(
           "border-b border-border/70 transition-all duration-300",
-          scrolled ? "bg-jmv-ivory/90 backdrop-blur-md" : "bg-jmv-ivory/80",
+          scrolled ? "bg-jmv-ivory backdrop-blur-md" : "bg-jmv-ivory",
         )}
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
           <Link to="/" className="group flex items-center gap-3" aria-label={company.legalName}>
-            <img src={jmvLogo} alt={`${company.legalName} logo`} className="h-12 w-12 rounded-full object-cover" />
+            <img
+              src={jmvLogo}
+              alt={`${company.legalName} logo`}
+              className="h-12 w-12 rounded-full object-cover"
+            />
             <span className="hidden text-[0.8rem] font-semibold leading-tight tracking-tight text-jmv-brown sm:block">
               Jai Maa Vindhyavasini
               <span className="block text-[0.7rem] font-medium uppercase tracking-[0.18em] text-jmv-charcoal/60">
@@ -171,11 +178,11 @@ export function Navbar() {
                             search={item.search}
                             className={cn(
                               "block rounded-xl px-3 py-2 text-sm text-jmv-charcoal transition-colors hover:bg-jmv-grey hover:text-jmv-orange",
-                              (location.pathname === "/projects" &&
-                                ((item.search as { filter?: string; category?: string }).filter ===
+                              ((location.pathname === "/projects" &&
+                                (item.search as { filter?: string; category?: string }).filter ===
                                   (location.search?.filter ?? "")) ||
-                                ((item.search as { filter?: string; category?: string }).category ===
-                                  (location.search?.category ?? ""))) &&
+                                (item.search as { filter?: string; category?: string }).category ===
+                                  (location.search?.category ?? "")) &&
                                 "bg-jmv-grey text-jmv-orange",
                             )}
                           >
@@ -227,8 +234,14 @@ export function Navbar() {
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between border-b border-border px-6 py-5">
             <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-3">
-              <img src={jmvLogo} alt={`${company.legalName} logo`} className="h-11 w-11 rounded-full object-cover" />
-              <span className="text-left text-sm font-semibold text-jmv-brown">Jai Maa Vindhyavasini</span>
+              <img
+                src={jmvLogo}
+                alt={`${company.legalName} logo`}
+                className="h-11 w-11 rounded-full object-cover"
+              />
+              <span className="text-left text-sm font-semibold text-jmv-brown">
+                Jai Maa Vindhyavasini
+              </span>
             </Link>
             <button
               type="button"
@@ -240,7 +253,10 @@ export function Navbar() {
             </button>
           </div>
 
-          <nav className="flex-1 space-y-2 overflow-y-auto px-6 py-6" aria-label="Mobile navigation">
+          <nav
+            className="flex-1 space-y-2 overflow-y-auto px-6 py-6"
+            aria-label="Mobile navigation"
+          >
             {navLinks.map((link) => {
               const active = isPathMatch(link.href);
 
@@ -249,12 +265,17 @@ export function Navbar() {
                   <div key={link.href} className="border-b border-border pb-3">
                     <button
                       type="button"
-                      onClick={() => setMobileSection(mobileSection === "services" ? null : "services")}
+                      onClick={() =>
+                        setMobileSection(mobileSection === "services" ? null : "services")
+                      }
                       className="flex w-full items-center justify-between py-3 text-left text-base font-semibold text-jmv-brown"
                     >
                       {link.label}
                       <ChevronDown
-                        className={cn("h-4 w-4 transition-transform", mobileSection === "services" && "rotate-180")}
+                        className={cn(
+                          "h-4 w-4 transition-transform",
+                          mobileSection === "services" && "rotate-180",
+                        )}
                       />
                     </button>
                     {mobileSection === "services" && (
@@ -283,12 +304,17 @@ export function Navbar() {
                   <div key={link.href} className="border-b border-border pb-3">
                     <button
                       type="button"
-                      onClick={() => setMobileSection(mobileSection === "projects" ? null : "projects")}
+                      onClick={() =>
+                        setMobileSection(mobileSection === "projects" ? null : "projects")
+                      }
                       className="flex w-full items-center justify-between py-3 text-left text-base font-semibold text-jmv-brown"
                     >
                       {link.label}
                       <ChevronDown
-                        className={cn("h-4 w-4 transition-transform", mobileSection === "projects" && "rotate-180")}
+                        className={cn(
+                          "h-4 w-4 transition-transform",
+                          mobileSection === "projects" && "rotate-180",
+                        )}
                       />
                     </button>
                     {mobileSection === "projects" && (
@@ -301,11 +327,11 @@ export function Navbar() {
                             onClick={() => setOpen(false)}
                             className={cn(
                               "block rounded-xl px-3 py-2 text-sm text-jmv-charcoal",
-                              (location.pathname === "/projects" &&
-                                ((item.search as { filter?: string; category?: string }).filter ===
+                              ((location.pathname === "/projects" &&
+                                (item.search as { filter?: string; category?: string }).filter ===
                                   (location.search?.filter ?? "")) ||
-                                ((item.search as { filter?: string; category?: string }).category ===
-                                  (location.search?.category ?? ""))) &&
+                                (item.search as { filter?: string; category?: string }).category ===
+                                  (location.search?.category ?? "")) &&
                                 "bg-jmv-grey text-jmv-orange",
                             )}
                           >

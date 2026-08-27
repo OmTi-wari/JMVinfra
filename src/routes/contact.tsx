@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CheckCircle2, Instagram, MapPin, Phone } from "lucide-react";
+import { CheckCircle2, Instagram, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageLayout } from "@/components/PageLayout";
 import { company, contact } from "@/data/site";
@@ -17,6 +17,7 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   const [tab, setTab] = useState<(typeof tabs)[number]>("General Enquiry");
   const [feedback, setFeedback] = useState<"success" | "error" | null>(null);
+  const secondaryPhone = contact.phones[1] ?? contact.phone;
   return (
     <PageLayout
       eyebrow="Contact"
@@ -27,39 +28,54 @@ function ContactPage() {
         <aside className="space-y-5">
           <div className="rounded-2xl bg-jmv-brown p-7 text-white">
             <p className="eyebrow text-jmv-orange">Verified contact</p>
-            <a
-              href={`tel:${contact.phone.replace(/\s/g, "")}`}
-              className="mt-4 flex items-center gap-3 text-2xl font-bold text-white"
-            >
-              <Phone className="h-5 w-5 text-jmv-orange" />
-              {contact.phone}
-            </a>
-            <div className="mt-4 space-y-2 text-sm text-white/75">
-              {contact.phones.slice(1).map((phone) => (
-                <a key={phone} href={`tel:${phone.replace(/\s/g, "")}`} className="block hover:text-white">
-                  {phone}
-                </a>
-              ))}
-              <a href={`mailto:${contact.email}`} className="block hover:text-white">
+            <div className="mt-6 space-y-4 text-sm text-white/75">
+              <div className="flex items-start gap-3">
+                <Phone className="mt-1 h-5 w-5 shrink-0 text-jmv-orange" />
+                <div className="space-y-1 text-2xl font-bold leading-tight text-white">
+                  <a
+                    href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                    className="block hover:text-white/80"
+                  >
+                    {contact.phone}
+                  </a>
+                  <a
+                    href={`tel:${secondaryPhone.replace(/\s/g, "")}`}
+                    className="block hover:text-white/80"
+                  >
+                    {secondaryPhone}
+                  </a>
+                </div>
+              </div>
+              <a
+                href={`mailto:${contact.email}`}
+                className="flex items-center gap-3 hover:text-white"
+              >
+                <Mail className="h-5 w-5 text-jmv-orange" />
                 {contact.email}
               </a>
-              <a href={`https://wa.me/${contact.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer" className="block hover:text-white">
+              <a
+                href={`https://wa.me/${contact.whatsapp.replace(/\D/g, "")}`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 hover:text-white"
+              >
+                <MessageCircle className="h-5 w-5 text-jmv-orange" />
                 WhatsApp: {contact.whatsapp}
               </a>
+              <a
+                href={company.instagramUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 hover:text-white"
+              >
+                <Instagram className="h-5 w-5 text-jmv-orange" />
+                @jmv_engineering_infra
+              </a>
+              <p className="flex items-center gap-3 text-white/75">
+                <MapPin className="h-5 w-5 text-jmv-orange" />
+                Mumbai & Ahmedabad
+              </p>
             </div>
-            <a
-              href={company.instagramUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-5 flex items-center gap-3 text-sm text-white/75"
-            >
-              <Instagram className="h-5 w-5 text-jmv-orange" />
-              @jmv_engineering_infra
-            </a>
-            <p className="mt-5 flex items-center gap-3 text-sm text-white/75">
-              <MapPin className="h-5 w-5 text-jmv-orange" />
-              Mumbai & Ahmedabad
-            </p>
           </div>
           <div className="rounded-2xl border border-border bg-white p-7 shadow-soft">
             <p className="eyebrow text-jmv-orange">Office presence</p>
@@ -117,7 +133,6 @@ function ContactPage() {
                 <input
                   name="email"
                   type="email"
-                  required
                   className="mt-2 w-full rounded-xl border border-border px-4 py-3 font-normal outline-none focus:border-jmv-orange"
                 />
               </label>
