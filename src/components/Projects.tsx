@@ -29,6 +29,7 @@ export function Projects() {
                 <button
                   key={tab}
                   type="button"
+                  suppressHydrationWarning={true}
                   onClick={() => setActiveTab(tab)}
                   className={
                     activeTab === tab

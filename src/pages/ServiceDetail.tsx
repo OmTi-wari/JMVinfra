@@ -1,10 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
-import ServiceDetailPage from "../pages/ServiceDetail";
+import { ArrowRight } from "lucide-react";
+import { Link, useParams } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/services/$slug")({
-  head: ({ params }) => ({ meta: [{ title: `${params.slug.replace(/-/g, " ")} | JMV Engineering Infra` }] }),
-  component: ServiceDetailPage,
-});
+import { PageLayout } from "@/components/PageLayout";
+import { servicesData } from "@/data/servicesData";
+import { projectsData } from "@/data/projectsData";
+
+export default function ServiceDetailPage() {
   const { slug } = useParams({ from: "/services/$slug" });
   const service = servicesData.find((item) => item.slug === slug || item.id === slug);
 

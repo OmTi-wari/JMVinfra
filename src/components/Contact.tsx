@@ -68,6 +68,7 @@ export function Contact() {
                       name={field.id}
                       type={field.type}
                       required={field.required}
+                      suppressHydrationWarning={true}
                       autoComplete={"autoComplete" in field ? field.autoComplete : undefined}
                       className="mt-2 w-full border border-input bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-accent"
                     />
@@ -85,6 +86,7 @@ export function Contact() {
                     id="message"
                     name="message"
                     rows={5}
+                    suppressHydrationWarning={true}
                     className="mt-2 w-full resize-none border border-input bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-accent"
                   />
                 </div>
@@ -92,6 +94,7 @@ export function Contact() {
 
               <button
                 type="submit"
+                suppressHydrationWarning={true}
                 className="mt-8 w-full bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-accent sm:w-auto"
               >
                 Send Enquiry

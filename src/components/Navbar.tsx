@@ -109,6 +109,7 @@ export function Navbar() {
                   <div key={link.href} className="group relative">
                     <button
                       type="button"
+                      suppressHydrationWarning={true}
                       className={cn(
                         "flex items-center gap-1 text-sm font-medium transition-colors",
                         active ? "text-[#E65100]" : "text-[#2C1D11]/80 hover:text-[#E65100]",
@@ -143,6 +144,7 @@ export function Navbar() {
                   <div key={link.href} className="group relative">
                     <button
                       type="button"
+                      suppressHydrationWarning={true}
                       className={cn(
                         "flex items-center gap-1 text-sm font-medium transition-colors",
                         active ? "text-[#E65100]" : "text-[#2C1D11]/80 hover:text-[#E65100]",
@@ -195,6 +197,7 @@ export function Navbar() {
 
           <button
             type="button"
+            suppressHydrationWarning={true}
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -247,6 +250,7 @@ export function Navbar() {
                   <div key={link.href} className="border-b border-border pb-3">
                     <button
                       type="button"
+                      suppressHydrationWarning={true}
                       onClick={() =>
                         setMobileSection(mobileSection === "services" ? null : "services")
                       }
@@ -286,6 +290,7 @@ export function Navbar() {
                   <div key={link.href} className="border-b border-border pb-3">
                     <button
                       type="button"
+                      suppressHydrationWarning={true}
                       onClick={() =>
                         setMobileSection(mobileSection === "projects" ? null : "projects")
                       }
