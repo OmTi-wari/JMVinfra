@@ -27,11 +27,9 @@ export const navLinks = [
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
   { label: "Capabilities", href: "/capabilities" },
-  { label: "People", href: "/people" },
   { label: "Locations", href: "/locations" },
   { label: "News", href: "/news" },
   { label: "Careers", href: "/careers" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const stats = [

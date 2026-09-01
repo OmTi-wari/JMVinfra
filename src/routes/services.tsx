@@ -1,7 +1,7 @@
-import { ArrowUpRight, Check } from "lucide-react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Outlet, createFileRoute, useLocation } from "@tanstack/react-router";
 
 import { PageLayout } from "@/components/PageLayout";
+import { ServiceCard } from "@/components/ServiceCard";
 import { servicesData } from "@/data/servicesData";
 
 export const Route = createFileRoute("/services")({
@@ -10,16 +10,43 @@ export const Route = createFileRoute("/services")({
 });
 
 function ServicesPage() {
+  const location = useLocation();
+
+  if (location.pathname !== "/services") {
+    return <Outlet />;
+  }
+
   return (
-    <PageLayout eyebrow="Business areas" title="Engineering capability across critical infrastructure sectors." description="We support public works, transit, civil infrastructure, municipal delivery, and bespoke turnkey execution with precision and accountability.">
+    <PageLayout
+      eyebrow="Business areas"
+      title="Engineering capability across critical infrastructure sectors."
+      description="We support public works, transit, civil infrastructure, municipal delivery, and bespoke turnkey execution with precision and accountability."
+    >
+      <div className="mb-10 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="border border-[#E5E7EB] bg-white p-6 md:p-8">
+          <div className="flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#E65100]">
+            <span className="h-1.5 w-1.5 bg-[#E65100]" />
+            <span>Capability portfolio</span>
+          </div>
+          <p className="mt-5 max-w-xl text-base leading-7 text-[#18181B]/75 md:text-lg">
+            We engineer dependable delivery across civil works, transit, aviation, and municipal environments with a strong emphasis on technical coordination, operational clarity, and project continuity.
+          </p>
+        </div>
+
+        <div className="border border-[#2C1D11] bg-[#2C1D11] p-6 text-white md:p-8">
+          <div className="flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#E65100]">
+            <span className="h-1.5 w-1.5 bg-[#E65100]" />
+            <span>Execution model</span>
+          </div>
+          <p className="mt-5 text-2xl font-bold tracking-[-0.04em] text-white">Precision-led delivery for live infrastructure conditions.</p>
+        </div>
+      </div>
+
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {servicesData.map((service, index) => (
-          <article key={service.slug} className="group rounded-[1.75rem] border border-border bg-white p-7 shadow-soft transition hover:-translate-y-1 hover:border-jmv-orange/50 hover:shadow-lift">
-            <div className="flex items-start justify-between gap-4"><span className="text-5xl font-extrabold tracking-[-0.08em] text-jmv-orange/20">{String(index + 1).padStart(2, "0")}</span><ArrowUpRight className="h-5 w-5 text-jmv-orange transition group-hover:translate-x-1 group-hover:-translate-y-1" /></div>
-            <p className="eyebrow mt-8 text-jmv-orange">{service.category}</p><h2 className="mt-3 text-2xl font-bold text-jmv-brown">{service.title}</h2><p className="mt-4 text-sm leading-7 text-jmv-charcoal/70">{service.shortDescription}</p>
-            <ul className="mt-6 space-y-3 border-t border-border pt-5 text-sm text-jmv-charcoal/75">{service.highlights.map((highlight) => <li key={highlight} className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-jmv-orange" />{highlight}</li>)}</ul>
-            <Link to="/services/$slug" params={{ slug: service.slug }} className="mt-7 inline-flex rounded-full bg-jmv-brown px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-jmv-orange">Explore service</Link>
-          </article>
+          <div key={service.slug ?? service.id} className={index === 1 ? "xl:col-span-2" : ""}>
+            <ServiceCard service={service} />
+          </div>
         ))}
       </div>
     </PageLayout>

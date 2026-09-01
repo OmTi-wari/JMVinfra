@@ -207,6 +207,9 @@ function CapabilitiesPage() {
   const [activePillar, setActivePillar] = useState(0);
   const activeCapability = capabilityPillars[activePillar];
 
+  const iconMap = [Building2, Truck, ShieldCheck, HardHat, Building2, ShieldCheck];
+  const Icon = iconMap[activePillar] ?? Building2;
+
   return (
     <main className="bg-[#FAFAFA] text-[#1A1A1A]">
       <section className="relative isolate overflow-hidden bg-[#2C1D11] text-white">
@@ -216,29 +219,19 @@ function CapabilitiesPage() {
             alt="Infrastructure construction site"
             className="h-full w-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(230,81,0,0.38),_transparent_42%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(230,81,0,0.42),_transparent_30%)]" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#2C1D11]/90 via-[#2C1D11]/80 to-[#2C1D11]/50" />
-          <svg
-            aria-hidden="true"
-            className="absolute inset-0 h-full w-full opacity-20"
-            viewBox="0 0 1200 800"
-            preserveAspectRatio="none"
-          >
-            <g stroke="rgba(255,255,255,0.35)" strokeWidth="1">
-              <path d="M0 120H1200M0 240H1200M0 360H1200M0 480H1200M0 600H1200M0 720H1200" />
-              <path d="M160 0V800M320 0V800M480 0V800M640 0V800M800 0V800M960 0V800M1120 0V800" />
-            </g>
-          </svg>
+          <div className="absolute inset-y-0 right-0 hidden w-1/3 border-l border-white/10 bg-white/[0.02] lg:block" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:pb-28 lg:pt-28">
           <div className="max-w-3xl">
-            <p className="eyebrow text-[#E65100]">Capabilities & execution</p>
-            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-white/75">
-              Technical delivery framework · site-first systems
-            </p>
+            <div className="flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#E65100]">
+              <span className="h-1.5 w-1.5 bg-[#E65100]" />
+              <span>Capabilities & execution</span>
+            </div>
             <h1 className="mt-6 text-4xl font-extrabold tracking-[-0.06em] text-white md:text-6xl lg:text-7xl">
-              Engineering Precision at Massive Scale.
+              Engineering precision at massive scale.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/80 md:text-lg">
               From complex highway grids to high-capacity rail corridors, our integrated
@@ -247,14 +240,14 @@ function CapabilitiesPage() {
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-[#E65100] px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#BF360C]"
+                className="inline-flex items-center gap-2 border border-[#E65100] bg-[#E65100] px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-white hover:text-[#2C1D11]"
               >
                 Initiate capability consultation
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-white/10"
+                className="inline-flex items-center gap-2 border border-white/25 bg-white/5 px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-white/10"
               >
                 Explore project delivery
               </Link>
@@ -264,15 +257,30 @@ function CapabilitiesPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-        <div className="mb-8 max-w-2xl">
-          <p className="eyebrow text-[#E65100]">Capability matrix</p>
-          <h2 className="mt-4 text-3xl font-extrabold tracking-[-0.05em] text-[#2C1D11] md:text-4xl">
-            An execution model built for infrastructure complexity.
-          </h2>
+        <div className="mb-8 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="border border-[#E5E7EB] bg-white p-6 md:p-8">
+            <div className="flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#E65100]">
+              <span className="h-1.5 w-1.5 bg-[#E65100]" />
+              <span>Capability matrix</span>
+            </div>
+            <h2 className="mt-5 text-3xl font-extrabold tracking-[-0.05em] text-[#2C1D11] md:text-4xl">
+              An execution model built for infrastructure complexity.
+            </h2>
+          </div>
+
+          <div className="border border-[#2C1D11] bg-[#2C1D11] p-6 text-white md:p-8">
+            <div className="flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#E65100]">
+              <span className="h-1.5 w-1.5 bg-[#E65100]" />
+              <span>Delivery logic</span>
+            </div>
+            <p className="mt-5 text-lg leading-8 text-white/80">
+              Our capability stack is structured around project control, site execution, and asset durability rather than isolated service silos.
+            </p>
+          </div>
         </div>
 
-        <div className="overflow-hidden border border-neutral-200 bg-white shadow-soft">
-          <div className="flex flex-wrap gap-2 border-b border-neutral-200 bg-[#F3F4F6] p-3 lg:p-4">
+        <div className="overflow-hidden border border-[#E5E7EB] bg-white">
+          <div className="flex flex-wrap gap-2 border-b border-[#E5E7EB] bg-[#F3F4F6] p-3 lg:p-4">
             {capabilityPillars.map((pillar, index) => (
               <button
                 key={pillar.id}
@@ -280,10 +288,10 @@ function CapabilitiesPage() {
                 onClick={() => setActivePillar(index)}
                 aria-pressed={activePillar === index}
                 className={[
-                  "rounded-full border px-4 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.12em] transition-all duration-200",
+                  "border px-4 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.12em] transition-all duration-200",
                   activePillar === index
                     ? "border-[#E65100] bg-[#E65100] text-white"
-                    : "border-neutral-200 bg-white text-[#2C1D11]/75 hover:border-[#E65100]/40 hover:text-[#E65100]",
+                    : "border-[#E5E7EB] bg-white text-[#2C1D11]/75 hover:border-[#E65100]/40 hover:text-[#E65100]",
                 ].join(" ")}
               >
                 {pillar.label}
@@ -291,18 +299,16 @@ function CapabilitiesPage() {
             ))}
           </div>
 
-          <div className="grid gap-8 p-5 lg:grid-cols-[1.1fr_0.9fr] lg:p-8">
+          <div className="grid gap-8 p-5 lg:grid-cols-[1.15fr_0.85fr] lg:p-8">
             <div className="space-y-6">
               <div className="flex items-center gap-3">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F3F4F6] text-[#E65100] shadow-soft">
-                  {activePillar === 0 && <Building2 className="h-5 w-5" />}
-                  {activePillar === 1 && <Gauge className="h-5 w-5" />}
-                  {activePillar === 2 && <Truck className="h-5 w-5" />}
-                  {activePillar === 3 && <ClipboardCheck className="h-5 w-5" />}
-                  {activePillar === 4 && <BadgeCheck className="h-5 w-5" />}
-                  {activePillar === 5 && <ShieldCheck className="h-5 w-5" />}
+                <span className="flex h-12 w-12 items-center justify-center border border-[#E5E7EB] bg-[#F3F4F6] text-[#E65100]">
+                  <Icon className="h-5 w-5" />
                 </span>
-                <p className="eyebrow text-[#E65100]">{activeCapability.label}</p>
+                <div className="flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#E65100]">
+                  <span className="h-1.5 w-1.5 bg-[#E65100]" />
+                  <span>{activeCapability.label}</span>
+                </div>
               </div>
 
               <div>
@@ -315,19 +321,21 @@ function CapabilitiesPage() {
               </div>
 
               <ul className="grid gap-3 sm:grid-cols-2">
-                {activeCapability.highlights.map((item) => (
+                {activeCapability.highlights.map((item, index) => (
                   <li
                     key={item}
-                    className="flex items-start gap-3 rounded-2xl border border-neutral-200 bg-[#F3F4F6] p-4 text-sm leading-6 text-[#1A1A1A]/80"
+                    className="grid grid-cols-[auto_1fr] gap-3 border-l border-[#E5E7EB] bg-[#F3F4F6] p-4 text-sm leading-6 text-[#1A1A1A]/80"
                   >
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#E65100]" />
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#E65100]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="relative overflow-hidden rounded-[1.5rem] border border-neutral-200 bg-[#F3F4F6]">
+            <div className="relative overflow-hidden border border-[#E5E7EB] bg-[#F3F4F6]">
               <img
                 src={activeCapability.image}
                 alt={activeCapability.title}
@@ -339,7 +347,7 @@ function CapabilitiesPage() {
                   {activeCapability.details.map((detail) => (
                     <div
                       key={detail.label}
-                      className="rounded-xl border border-white/15 bg-[#2C1D11]/75 p-3 backdrop-blur-sm"
+                      className="border border-white/15 bg-[#2C1D11]/75 p-3 backdrop-blur-sm"
                     >
                       <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/65">
                         {detail.label}
@@ -356,29 +364,31 @@ function CapabilitiesPage() {
 
       <section className="mx-auto max-w-7xl px-6 py-2 lg:px-10 lg:py-8">
         <div className="mb-8 max-w-2xl">
-          <p className="eyebrow text-[#E65100]">Fleet readiness</p>
+          <div className="flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#E65100]">
+            <span className="h-1.5 w-1.5 bg-[#E65100]" />
+            <span>Fleet readiness</span>
+          </div>
           <h2 className="mt-4 text-3xl font-extrabold tracking-[-0.05em] text-[#2C1D11] md:text-4xl">
-            Heavy Machinery & Fleet Readiness
+            Heavy machinery & fleet readiness
           </h2>
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {equipmentCategories.map((equipment) => (
+          {equipmentCategories.map((equipment, index) => (
             <article
               key={equipment.title}
-              className="group overflow-hidden rounded-[1.75rem] border border-neutral-200 bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:border-[#E65100]/40 hover:shadow-lift"
+              className="group overflow-hidden border border-[#E5E7EB] bg-white transition duration-300 hover:-translate-y-1 hover:border-[#E65100]/40"
             >
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden bg-[#2C1D11]">
                 <img
                   src={equipment.image}
                   alt={equipment.title}
-                  className="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+                  className="h-56 w-full object-cover opacity-85 transition duration-500 group-hover:scale-[1.02]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2C1D11]/75 via-transparent to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-4">
-                  <span className="rounded-full border border-white/20 bg-white/12 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-white backdrop-blur-sm">
-                    {equipment.metric}
-                  </span>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2C1D11]/80 via-[#2C1D11]/20 to-transparent" />
+                <div className="absolute left-4 top-4 flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80">
+                  <span className="h-1.5 w-1.5 bg-[#E65100]" />
+                  <span>{String(index + 1).padStart(2, "0")}</span>
                 </div>
               </div>
 
@@ -388,9 +398,9 @@ function CapabilitiesPage() {
                 </h3>
                 <ul className="mt-4 space-y-2 text-sm text-[#1A1A1A]/75">
                   {equipment.applications.map((application) => (
-                    <li key={application} className="flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#E65100]" aria-hidden="true" />
-                      {application}
+                    <li key={application} className="flex items-start gap-2 border-l border-[#E5E7EB] pl-3">
+                      <span className="mt-2 h-1.5 w-1.5 bg-[#E65100]" aria-hidden="true" />
+                      <span>{application}</span>
                     </li>
                   ))}
                 </ul>
@@ -403,7 +413,10 @@ function CapabilitiesPage() {
       <section className="mt-20 bg-[#2C1D11] py-18 text-white">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
           <div>
-            <p className="eyebrow text-[#E65100]">HSE commitment</p>
+            <div className="flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#E65100]">
+              <span className="h-1.5 w-1.5 bg-[#E65100]" />
+              <span>HSE commitment</span>
+            </div>
             <h2 className="mt-5 text-3xl font-extrabold tracking-[-0.05em] text-white md:text-5xl">
               Quality and safety are engineered into every shift.
             </h2>
@@ -412,7 +425,7 @@ function CapabilitiesPage() {
               work remains controlled, traceable, and aligned with statutory and project
               standards.
             </p>
-            <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#E65100]/40 bg-[#E65100]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#F7C6A2]">
+            <div className="mt-8 inline-flex items-center gap-2 border border-[#E65100]/40 bg-[#E65100]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#F7C6A2]">
               <HardHat className="h-4 w-4" />
               Zero-accident objective
             </div>
@@ -427,9 +440,9 @@ function CapabilitiesPage() {
             ].map((item, index) => (
               <div
                 key={item}
-                className="rounded-[1.5rem] border border-white/10 bg-white/4 p-5 backdrop-blur-sm"
+                className="border border-white/10 bg-white/5 p-5"
               >
-                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#E65100]">
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#E65100]">
                   0{index + 1}
                 </p>
                 <p className="mt-4 text-lg font-semibold leading-7 text-white">{item}</p>
@@ -440,9 +453,12 @@ function CapabilitiesPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-        <div className="rounded-[2rem] border border-[#E65100]/40 bg-[linear-gradient(135deg,_rgba(230,81,0,0.04),_rgba(230,81,0,0.12))] p-8 md:p-10 lg:flex lg:items-center lg:justify-between lg:gap-8">
+        <div className="border border-[#E65100]/30 bg-[linear-gradient(135deg,_rgba(230,81,0,0.04),_rgba(230,81,0,0.12))] p-8 md:p-10 lg:flex lg:items-center lg:justify-between lg:gap-8">
           <div className="max-w-2xl">
-            <p className="eyebrow text-[#E65100]">Capability consultation</p>
+            <div className="flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#E65100]">
+              <span className="h-1.5 w-1.5 bg-[#E65100]" />
+              <span>Capability consultation</span>
+            </div>
             <h2 className="mt-4 text-3xl font-extrabold tracking-[-0.05em] text-[#2C1D11] md:text-4xl">
               Require specialized turnkey execution for your upcoming infrastructure project?
             </h2>
@@ -450,7 +466,7 @@ function CapabilitiesPage() {
 
           <Link
             to="/contact"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#E65100] px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#BF360C] lg:mt-0"
+            className="mt-6 inline-flex items-center gap-2 bg-[#E65100] px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#2C1D11] lg:mt-0"
           >
             Initiate capability consultation
             <ArrowRight className="h-4 w-4" />

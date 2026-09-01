@@ -64,26 +64,8 @@ export function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="border-b border-white/10 bg-jmv-brown text-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2 text-[11px] font-medium tracking-[0.08em] uppercase lg:px-10">
-          <div className="flex items-center gap-4 text-white/80">
-            <a
-              href={`tel:${contact.phone.replace(/\s/g, "")}`}
-              className="inline-flex items-center gap-2 hover:text-white"
-            >
-              <Phone className="h-3.5 w-3.5" strokeWidth={2} />
-              {contact.phone}
-            </a>
-            <a
-              href={contact.instagramUrl}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 hover:text-white"
-            >
-              <Instagram className="h-3.5 w-3.5" strokeWidth={2} />
-              {contact.instagramHandle}
-            </a>
-          </div>
+      <div className="border-b border-white/10 bg-[#2C1D11] text-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-end gap-4 px-6 py-2 text-[11px] font-medium tracking-[0.08em] uppercase lg:px-10">
           <div className="hidden items-center gap-4 text-white/75 sm:flex">
             <span className="inline-flex items-center gap-2">
               <MapPin className="h-3.5 w-3.5" strokeWidth={2} />
@@ -100,8 +82,8 @@ export function Navbar() {
 
       <div
         className={cn(
-          "border-b border-border/70 transition-all duration-300",
-          scrolled ? "bg-jmv-ivory backdrop-blur-md" : "bg-jmv-ivory",
+          "border-b border-[#E5E7EB] transition-all duration-300",
+          scrolled ? "bg-[#FAFAFA]/90 backdrop-blur-md" : "bg-[#FAFAFA]",
         )}
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
@@ -109,11 +91,11 @@ export function Navbar() {
             <img
               src={jmvLogo}
               alt={`${company.legalName} logo`}
-              className="h-12 w-12 rounded-full object-cover"
+              className="h-12 w-12 rounded-none border border-[#E5E7EB] object-cover"
             />
-            <span className="hidden text-[0.8rem] font-semibold leading-tight tracking-tight text-jmv-brown sm:block">
+            <span className="hidden text-[0.8rem] font-semibold leading-tight tracking-tight text-[#2C1D11] sm:block">
               Jai Maa Vindhyavasini
-              <span className="block text-[0.7rem] font-medium uppercase tracking-[0.18em] text-jmv-charcoal/60">
+              <span className="block text-[0.7rem] font-medium uppercase tracking-[0.18em] text-[#18181B]/60">
                 Engineering Infra
               </span>
             </span>
@@ -129,21 +111,21 @@ export function Navbar() {
                       type="button"
                       className={cn(
                         "flex items-center gap-1 text-sm font-medium transition-colors",
-                        active ? "text-jmv-orange" : "text-jmv-brown/80 hover:text-jmv-orange",
+                        active ? "text-[#E65100]" : "text-[#2C1D11]/80 hover:text-[#E65100]",
                       )}
                     >
                       {link.label}
                       <ChevronDown className="h-4 w-4" strokeWidth={2} />
                     </button>
-                    <div className="invisible absolute left-0 top-full z-40 mt-3 w-[520px] rounded-2xl border border-border bg-white p-4 opacity-0 shadow-lift transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    <div className="invisible absolute left-0 top-full z-40 mt-3 w-[520px] border border-[#E5E7EB] bg-white p-4 opacity-0 shadow-lift transition-all duration-200 group-hover:visible group-hover:opacity-100">
                       <div className="grid grid-cols-2 gap-2">
                         {businessServices.map((item) => (
                           <Link
                             key={item.to}
                             to={item.to}
                             className={cn(
-                              "rounded-xl px-3 py-2.5 text-sm text-jmv-charcoal transition-colors hover:bg-jmv-grey hover:text-jmv-orange",
-                              isPathMatch(item.to) && "bg-jmv-grey text-jmv-orange",
+                              "border border-transparent px-3 py-2.5 text-sm text-[#18181B] transition-colors hover:border-[#E65100]/30 hover:bg-[#FAFAFA] hover:text-[#E65100]",
+                              isPathMatch(item.to) && "border-[#E65100]/30 bg-[#FAFAFA] text-[#E65100]",
                             )}
                           >
                             {item.label}
@@ -163,13 +145,13 @@ export function Navbar() {
                       type="button"
                       className={cn(
                         "flex items-center gap-1 text-sm font-medium transition-colors",
-                        active ? "text-jmv-orange" : "text-jmv-brown/80 hover:text-jmv-orange",
+                        active ? "text-[#E65100]" : "text-[#2C1D11]/80 hover:text-[#E65100]",
                       )}
                     >
                       {link.label}
                       <ChevronDown className="h-4 w-4" strokeWidth={2} />
                     </button>
-                    <div className="invisible absolute left-0 top-full z-40 mt-3 w-[300px] rounded-2xl border border-border bg-white p-4 opacity-0 shadow-lift transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    <div className="invisible absolute left-0 top-full z-40 mt-3 w-[300px] border border-[#E5E7EB] bg-white p-4 opacity-0 shadow-lift transition-all duration-200 group-hover:visible group-hover:opacity-100">
                       <div className="space-y-2">
                         {projectLinks.map((item) => (
                           <Link
@@ -177,13 +159,13 @@ export function Navbar() {
                             to={item.to}
                             search={item.search}
                             className={cn(
-                              "block rounded-xl px-3 py-2 text-sm text-jmv-charcoal transition-colors hover:bg-jmv-grey hover:text-jmv-orange",
+                              "block border border-transparent px-3 py-2 text-sm text-[#18181B] transition-colors hover:border-[#E65100]/30 hover:bg-[#FAFAFA] hover:text-[#E65100]",
                               ((location.pathname === "/projects" &&
                                 (item.search as { filter?: string; category?: string }).filter ===
                                   (location.search?.filter ?? "")) ||
                                 (item.search as { filter?: string; category?: string }).category ===
                                   (location.search?.category ?? "")) &&
-                                "bg-jmv-grey text-jmv-orange",
+                                "border-[#E65100]/30 bg-[#FAFAFA] text-[#E65100]",
                             )}
                           >
                             {item.label}
@@ -201,10 +183,10 @@ export function Navbar() {
             <Link
               to="/contact"
               className={cn(
-                "rounded-full border px-5 py-2.5 text-sm font-semibold transition-colors",
+                "border px-5 py-2.5 text-sm font-semibold transition-colors",
                 isPathMatch("/contact")
-                  ? "border-jmv-orange bg-jmv-orange text-white"
-                  : "border-jmv-orange/20 bg-jmv-orange text-white hover:bg-jmv-orange-burnt",
+                  ? "border-[#E65100] bg-[#E65100] text-white"
+                  : "border-[#E65100] bg-[#E65100] text-white hover:bg-[#2C1D11]",
               )}
             >
               ENQUIRE NOW
@@ -217,7 +199,7 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white text-jmv-brown shadow-soft lg:hidden"
+            className="flex h-11 w-11 items-center justify-center border border-[#E5E7EB] bg-white text-[#2C1D11] lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
