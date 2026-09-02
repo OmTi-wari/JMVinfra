@@ -1,0 +1,1 @@
+import{t as e}from"./About-CI4FprLC.js";var t=e;export{t as component};

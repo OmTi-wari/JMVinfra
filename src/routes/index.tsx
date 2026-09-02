@@ -1,14 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-
-import { About } from "@/components/About";
-import { Contact } from "@/components/Contact";
-import { CtaBanner } from "@/components/CtaBanner";
-import { Hero } from "@/components/Hero";
-import { Projects } from "@/components/Projects";
-import { Services } from "@/components/Services";
-import { Statement } from "@/components/Statement";
-import { Stats } from "@/components/Stats";
-import { WhyChooseUs } from "@/components/WhyChooseUs";
+import IndexPage from "../pages/Index";
 
 const title =
   "Jai Maa Vindhyavasini Engineering Infra | Engineering & Construction";
@@ -26,21 +17,6 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Index,
+  component: IndexPage,
 });
 
-function Index() {
-  return (
-    <>
-      <Hero />
-      <About />
-      <Stats />
-      <Services />
-      <Projects />
-      <WhyChooseUs />
-      <Statement />
-      <CtaBanner />
-      <Contact />
-    </>
-  );
-}

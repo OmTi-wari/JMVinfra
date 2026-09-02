@@ -1,6 +1,6 @@
 import { o as projectsData, s as servicesData } from "./projectsData-CirWq4L7.mjs";
 import { n as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
-import { _ as useParams, g as Link } from "../_libs/@tanstack/react-router+[...].mjs";
+import { g as Link, v as useParams } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as PageLayout } from "./PageLayout-DeGFLLUS.mjs";
 import { w as ArrowRight } from "../_libs/lucide-react.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/services._slug-Bb8vmJs4.js
