@@ -1,9 +1,4 @@
 {
-  "framework": "tanstack-start",
-  "rewrites": [
-    {
-      "source": "/((?!assets/|src/|.*\\.(?:js|css|json|png|jpg|jpeg|gif|svg|ico)).*)",
-      "destination": "/index.html"
-    }
-  ]
+  "framework": "tanstack-start"
 }
+
