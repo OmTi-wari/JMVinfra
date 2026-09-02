@@ -1,9 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import ServiceDetailPage from "../pages/ServiceDetail";
+import { createFileRoute } from '@tanstack/react-router'
+import ServiceDetailPage from '../pages/ServiceDetail'
 
-export const Route = createFileRoute("/services/$slug")({
-  head: ({ params }) => ({
-    meta: [{ title: `${params.slug.replace(/-/g, " ")} | JMV Engineering Infra` }],
-  }),
+export const Route = createFileRoute('/services/$slug')({
   component: ServiceDetailPage,
-});
+})
+
